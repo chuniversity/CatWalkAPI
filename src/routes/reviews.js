@@ -12,8 +12,6 @@ routes.get('/', async (req, res) => {
     if (sort === 'helpful') {sort = {'helpfulness': -1};}
     if (sort === 'newest') { sort = {'date': -1}}
     if (sort === 'relevant') { sort = {'helpfulness': -1, 'date': -1}}
-
-    // const product_id = req.params.id;
     const reviewData = await MasterReview.find({product_id: product_id, reported: false}, {_id: 0, product_id: 0, reviewer_email: 0, reported: 0, __v: 0}).sort(sort).skip(count * (page - 1)).limit(parseInt(count)).lean();
     reviewData.date = new Date(reviewData.date * 1000)
     const reviews = {
@@ -31,12 +29,9 @@ routes.get('/', async (req, res) => {
 routes.post('/:id', async (req, res) => {
   try {
     const product_id = req.params.id;
-
     const {rating, summary, body, recommend, name, email, photos, characteristics} = req.body;
-    
     //get review id
     const reviewId = await Counter.findOneAndUpdate({_id: "id"}, {$inc:{review_id:1}}, {new: true});
-
     // create photos
     let newPhotos = []
     for (let item of photos) {
@@ -46,7 +41,6 @@ routes.post('/:id', async (req, res) => {
       newobject['url'] = item;
       newPhotos.push(newobject)
     }
-
     // create charachteristics
     let theChars = [];
     for (var key in characteristics) {
@@ -78,7 +72,6 @@ routes.post('/:id', async (req, res) => {
     res.status(400).send(error)
   }
 });
-
 
 routes.get('/:id/meta', async (req, res) => {
   try{
@@ -139,7 +132,6 @@ routes.get('/:id/meta', async (req, res) => {
         delete resultChar[key]['total']
       }
       metaResponse['characteristics'] = resultChar;
-
     res.json(metaResponse)
   } catch (error) {
     res.status(400).send(error)

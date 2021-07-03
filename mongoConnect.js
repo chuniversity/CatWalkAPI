@@ -3,8 +3,6 @@ const {Schema} = require('mongoose');
 
 const config = require('./config.js');
 
-
-
 //cloud db option
 // const mongoUrl = `mongodb+srv://${config.user}:${config.pass}@review.yglx2.mongodb.net/${dbName}?retryWrites=true&w=majority`
 const mongoUrl = `mongodb://localhost:27017/${config.dbName}`;
