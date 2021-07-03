@@ -4,12 +4,12 @@
 config:
   target: 'http://127.0.0.1:3000'
   phases:
-    - duration: 300
-      arrivalRate: 100
-      name: Beast Mode
-    # - duration: 1000
+    # - duration: 300
     #   arrivalRate: 100
-    #   name: INSANITY
+    #   name: Beast Mode
+    - duration: 100000
+      arrivalRate: 100000
+      name: INSANITY
 
 scenarios:
   - name: 'get reviews using productId'
