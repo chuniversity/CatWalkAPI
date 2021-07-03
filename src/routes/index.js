@@ -6,7 +6,7 @@ const userRoutes = require('./users')
 
 const router = Router()
 
-router.use('/home', homeRoutes)
+router.use('/', homeRoutes)
 router.use('/reviews', reviewRoutes)
 router.use('/users', userRoutes)
 
