@@ -18,7 +18,7 @@ app.use(router)
 
 const startServer = async () => {
   await startMongo()
-  app.listen(3000, () => {
+  app.listen(3300, () => {
     console.log(`listening on port 3000`)
   });
 }

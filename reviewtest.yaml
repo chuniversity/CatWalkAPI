@@ -7,8 +7,8 @@ config:
     # - duration: 300
     #   arrivalRate: 100
     #   name: Beast Mode
-    - duration: 100000
-      arrivalRate: 100000
+    - duration: 100
+      arrivalRate: 100
       name: INSANITY
 
 scenarios:
